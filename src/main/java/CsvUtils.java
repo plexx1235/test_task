@@ -3,6 +3,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import org.aeonbits.owner.ConfigFactory;
+import paths.IFilePaths;
 import schema_classes.Customer;
 
 import java.io.File;
@@ -10,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class CsvUtils {
+    public static final IFilePaths filePaths = ConfigFactory.create(IFilePaths.class);
     public void writeToCsv(JsonNode jsonNode, String pathName) throws IOException {
         CsvMapper csvMapper = new CsvMapper();
         CsvSchema csvSchema = csvMapper
@@ -29,6 +32,6 @@ public class CsvUtils {
         CsvMapper csvMapper = new CsvMapper();
         ObjectMapper mapper = new ObjectMapper();
         Customer readAll = csvMapper.readerFor(Customer.class).with(csvSchema).readValue(new File(targetCsvPath));
-        mapper.writerWithDefaultPrettyPrinter().writeValue(new File("src/main/resources/customer.json"), readAll);
+        mapper.writerWithDefaultPrettyPrinter().writeValue(new File(filePaths.customerJsonPath()), readAll);
     }
 }

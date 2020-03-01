@@ -2,6 +2,8 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import org.aeonbits.owner.ConfigFactory;
+import paths.IFilePaths;
 import schema_classes.Company;
 import schema_classes.Customer;
 
@@ -13,6 +15,7 @@ import static org.apache.commons.lang3.RandomUtils.nextFloat;
 import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 public class JsonGenerator {
+    public static final IFilePaths filePaths = ConfigFactory.create(IFilePaths.class);
      private ObjectMapper objectMapper = new ObjectMapper();
 
 
@@ -37,6 +40,6 @@ public class JsonGenerator {
 
     public void writeNewJson(JsonNode json) throws IOException {
         ObjectWriter writer = objectMapper.writer(new DefaultPrettyPrinter());
-        writer.writeValue(new File("src/main/resources/new_company.json"), json);
+        writer.writeValue(new File(filePaths.newCompanyJsonPath()), json);
     }
 }
