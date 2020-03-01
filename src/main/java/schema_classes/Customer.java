@@ -22,9 +22,9 @@ public class Customer {
     @JsonProperty("email")
     private String email;
     @JsonProperty("phone")
-    private long phone;
+    private int phone;
     @JsonProperty("balance")
-    private double balance;
+    private float balance;
 
     /**
      * No args constructor for use in serialization
@@ -41,7 +41,7 @@ public class Customer {
      * @param phone
      * @param email
      */
-    public Customer(String firstName, String lastName, String email, long phone, double balance) {
+    public Customer(String firstName, String lastName, String email, int phone, float balance) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -85,7 +85,7 @@ public class Customer {
     }
 
     @JsonProperty("phone")
-    public void setPhone(long phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
 
@@ -95,7 +95,7 @@ public class Customer {
     }
 
     @JsonProperty("balance")
-    public void setBalance(double balance) {
+    public void setBalance(float balance) {
         this.balance = balance;
     }
 
