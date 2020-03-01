@@ -13,10 +13,11 @@ import static org.apache.commons.lang3.RandomUtils.nextFloat;
 import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 public class JsonGenerator {
-     ObjectMapper objectMapper = new ObjectMapper();
+     private ObjectMapper objectMapper = new ObjectMapper();
 
-    public JsonNode readJson() throws IOException {
-        File file = new File("src/main/resources/company.json");
+
+    public JsonNode readJson(String pathName) throws IOException {
+        File file = new File(pathName);
         return objectMapper.readValue(file, JsonNode.class);
     }
 
