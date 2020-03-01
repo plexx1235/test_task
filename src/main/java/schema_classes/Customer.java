@@ -1,57 +1,113 @@
 package schema_classes;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "first_name",
+        "last_name",
+        "email",
+        "phone",
+        "balance"
+})
 public class Customer {
-    private String first_name;
-    private String last_name;
+
+    @JsonProperty("first_name")
+    private String firstName;
+    @JsonProperty("last_name")
+    private String lastName;
+    @JsonProperty("email")
     private String email;
-    private int phone;
-    private float balance;
+    @JsonProperty("phone")
+    private long phone;
+    @JsonProperty("balance")
+    private double balance;
 
-    public String getFirst_name() {
-        return first_name;
+    /**
+     * No args constructor for use in serialization
+     *
+     */
+    public Customer() {
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param balance
+     * @param phone
+     * @param email
+     */
+    public Customer(String firstName, String lastName, String email, long phone, double balance) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.balance = balance;
     }
 
-    public String getLast_name() {
-        return last_name;
+    @JsonProperty("first_name")
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    @JsonProperty("first_name")
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
+    @JsonProperty("last_name")
+    public String getLastName() {
+        return lastName;
+    }
+
+    @JsonProperty("last_name")
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @JsonProperty("email")
     public String getEmail() {
         return email;
     }
 
+    @JsonProperty("email")
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public int getPhone() {
+    @JsonProperty("phone")
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    @JsonProperty("phone")
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
-    public float getBalance() {
+    @JsonProperty("balance")
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    @JsonProperty("balance")
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
-    public Customer(String first_name, String last_name, String email, int phone, float balance) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.email = email;
-        this.phone = phone;
-        this.balance = balance;
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("firstName", firstName)
+                .append("lastName", lastName)
+                .append("email", email)
+                .append("phone", phone)
+                .append("balance", balance)
+                .toString();
     }
+
 }

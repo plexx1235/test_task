@@ -1,2 +1,4 @@
 /target/
 /.idea/
+/src/main/resources/new_company.json
+/src/main/resources/customer.csv

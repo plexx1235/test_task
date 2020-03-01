@@ -1,8 +1,7 @@
 {
   "company":"BigCompany LLC",
   "company_size":100500,
-  "customer":
-  {
+  "customer": {
     "first_name":"John",
     "last_name":"Smith",
     "email":"john.smith@email.com",
