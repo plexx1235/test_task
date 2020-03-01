@@ -12,7 +12,7 @@ public class JsonTest {
     private static JsonExtractor extractor = new JsonExtractor();
     private static JsonGenerator generator = new JsonGenerator();
     private static CsvUtils csvUtils = new CsvUtils();
-    public static final IFilePaths filePaths = ConfigFactory.create(IFilePaths.class);
+    private static final IFilePaths filePaths = ConfigFactory.create(IFilePaths.class);
 
     @BeforeAll
     static void setupTestData() throws Exception {
