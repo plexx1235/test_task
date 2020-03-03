@@ -15,7 +15,7 @@ public class JsonTest {
     private static final IFilePaths filePaths = ConfigFactory.create(IFilePaths.class);
 
     @BeforeAll
-    static void setupTestData() throws Exception {
+    static void setupTestData() {
         JsonNode companyJsonObject = generator.readJson(filePaths.companyJsonPath());
         JsonNode newCompanyObject = generator.changeJSONValues(companyJsonObject);
         generator.writeNewJson(newCompanyObject);
@@ -24,7 +24,7 @@ public class JsonTest {
     }
 
     @Test
-    public void checkThatExtractedJsonObjectHasSameValuesAsInGeneratedCSV() throws IOException {
+    public void checkThatExtractedJsonObjectHasSameValuesAsInGeneratedCSV() {
         JsonNode jsonFromFile = generator.readJson(filePaths.newCompanyJsonPath());
         JsonNode node = extractor.extractObjectByName(jsonFromFile, "customer");
         csvUtils.readCsvToJson(filePaths.customerCsvPath());
